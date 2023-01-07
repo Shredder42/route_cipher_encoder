@@ -7,6 +7,29 @@ build matrix
 encrypt and return encrypted message
 '''
 
+'''
+grid for encryption:
+WE WILL RUN THE BATTERIES AT VICSKBURG
+THE NIGHT OF APRIL 16 AND PROCEED
+TO GRAND GULF WHERE WE WILL REDUCE
+THE FORTS BE PREPARED TO CROSS THE
+RIVER ON APRIL 25 OR 29 ADMIRAL
+PORTER D1 D2 D3 D4 D5 D6
+
+WE WILL RUN THE BATTERIES AT
+VICKSBURG THE NIGHT OF APRIL 16
+AND PROCEED TO GRAND GULF WHERE
+WE WILL REDUCE THE FORTS BE
+PREPARED TO CROSS THE RIVER ON
+APRIL 25 OR 29 ADMIRAL PORTER
+D1 D2 D3 D4 D5 D6
+
+encrypted message:
+ANGELS CLAYTON PREPARED WE AND ODOR WE RUN NIGHT TO REDUCE CROSS OR CABIN
+CROCODILE MULTIPLY TO WILL PROCEED THE WILL AT SWEET WHERE BE ON LANGFORD SPAIN
+HOUNDS CLAYTON OWL BAILEY HICKORY HERMES UNIVERSITY FIRE ADD THE THE TREE OF THE
+
+'''
 
 #--------------------------------------------------
 # USER INPUT
@@ -17,10 +40,10 @@ and proceed to Grand Gulf where we will reduce the forts. Be prepared to cross
 the river on April 25 or 29. Admiral Porter'''
 
 # or rows in the transposition matrix
-ROWS = 6
+ROWS = 7
 
 # of columns in the transposition matrix
-COLS = 7
+COLS = 6
 
 # include dummy words separated by spaces equal to the number of columns (paste between quotes):
 dummy_words = 'angels crocodile cabin fire university spain'
@@ -47,7 +70,6 @@ code_words = {
 
 def main():
     pass
-
 
 
 if __name__ == '__main__':
