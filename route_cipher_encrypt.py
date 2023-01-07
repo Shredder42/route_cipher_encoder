@@ -64,11 +64,11 @@ code_words = {
 }
 
 def uppercase_code_words(code_words):
+    '''Uppecase the keys in the code words dictionary to match the uppercased message.'''
     code_words_upped = {}
     for k, v in code_words.items():
         code_words_upped[k.upper()] = v
-    print(code_words_upped)
-
+    return code_words_upped
 
 def validate_text_inputs(dummy_list, text_list):
     '''Validate all the user inputs for this cipher'''
@@ -91,21 +91,23 @@ def remove_punctuation_and_uppercase(word_list):
         cleaned_list.append(word)
     return cleaned_list
 
-def add_dummy_and_code_words(clean_message, clean_dummys):
-    '''Include dummy and code words to build full message'''
-    for idx, word in enumerate(clean_message):
-        if word in code_words.keys():
-            clean_message[idx] = code_words[word]
+def add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped):
+    '''Include dummy and code words to build coded message'''
+    for idx, word in enumerate(clean_message): # replace code words
+        if word in code_words_upped.keys():
+            clean_message[idx] = code_words_upped[word]
+    coded_message = clean_message + clean_dummys
+    print('The coded message = {}'.format(' '.join(coded_message)))
 
 
 def main():
     dummy_list = dummy_words.split()
     text_list = plaintext.split()
-    uppercase_code_words(code_words)
+    code_words_upped = uppercase_code_words(code_words)
     validate_text_inputs(dummy_list, text_list)
     clean_dummys = remove_punctuation_and_uppercase(dummy_list)
     clean_message = remove_punctuation_and_uppercase(text_list)
-    # add_dummy_and_code_words()
+    coded_message = add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped)
 
 if __name__ == '__main__':
     main()
