@@ -1,11 +1,4 @@
-'''
-validate and convert plaintext to all caps
-validate key and turn it to integers
-replace codewords and convert to all caps
-validate dummy words and convert to all caps
-build matrix
-encrypt and return encrypted message
-'''
+
 
 '''
 grid for encryption:
@@ -121,6 +114,18 @@ def build_matrix(coded_message):
         start += 1
     return encryption_matrix
 
+def encrypt_message(encryption_matrix, key_int):
+    '''identfy each column (abs value) and reverse appropriate lists'''
+    encrypted_text = ''
+    for i in key_int:
+        if i < 0:
+            for word in reversed(encryption_matrix[abs(i) - 1]): # reading from bottom to top
+                encrypted_text += word + ' '
+        if i > 0:
+            for word in encryption_matrix[i - 1]: # reading from top to bottom
+                encrypted_text += word + ' '
+    return encrypted_text
+
 
 def main():
     dummy_list = dummy_words.split()
@@ -132,6 +137,10 @@ def main():
     clean_message = remove_punctuation_and_uppercase(text_list)
     coded_message = add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped)
     encryption_matrix = build_matrix(coded_message)
+    encrypted_text = encrypt_message(encryption_matrix, key_int)
+
+    print('\nEncrypted text = {}'.format(encrypted_text))
+
 
 
 
