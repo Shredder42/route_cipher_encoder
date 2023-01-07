@@ -9,13 +9,6 @@ encrypt and return encrypted message
 
 '''
 grid for encryption:
-WE WILL RUN THE BATTERIES AT VICSKBURG
-THE NIGHT OF APRIL 16 AND PROCEED
-TO GRAND GULF WHERE WE WILL REDUCE
-THE FORTS BE PREPARED TO CROSS THE
-RIVER ON APRIL 25 OR 29 ADMIRAL
-PORTER D1 D2 D3 D4 D5 D6
-
 WE WILL RUN THE BATTERIES AT
 VICKSBURG THE NIGHT OF APRIL 16
 AND PROCEED TO GRAND GULF WHERE
@@ -30,6 +23,7 @@ CROCODILE MULTIPLY TO WILL PROCEED THE WILL AT SWEET WHERE BE ON LANGFORD SPAIN
 HOUNDS CLAYTON OWL BAILEY HICKORY HERMES UNIVERSITY FIRE ADD THE THE TREE OF THE
 
 '''
+import sys
 
 #--------------------------------------------------
 # USER INPUT
@@ -68,9 +62,23 @@ code_words = {
     'Porter': 'LANGFORD'
 }
 
-def main():
+def validate_text_inputs(dummy_list, text_list):
+    '''Validate all the user inputs for this cipher'''
+    if len(dummy_list) != COLS:
+        print('\nError - Number of dummy words does not match number of columns. Terminating program.', file=sys.stderr)
+        sys.exit(1)
+    if ROWS * COLS != len(dummy_list) + len(text_list):
+        print('\nError - Message length does not match chosen grid. Terminating program.', file=sys.stderr)
+        sys.exit(1)
+
+def add_dummy_and_code_words():
+    '''Add dummy and code words into the message and uppercase them'''
     pass
 
+def main():
+    dummy_list = dummy_words.split()
+    text_list = plaintext.split()
+    validate_text_inputs(dummy_list, text_list)
 
 if __name__ == '__main__':
     main()
