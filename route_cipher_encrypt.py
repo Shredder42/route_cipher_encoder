@@ -47,6 +47,7 @@ key = '-1 3 -2 6 5 -4'
 
 #--------------------------------------------------
 
+# Treating code words as if they are predefined (i.e. the user does not need to input them)
 code_words = {
     'Batteries': 'HOUNDS',
     'Vicksburg': 'ODOR',
@@ -71,14 +72,28 @@ def validate_text_inputs(dummy_list, text_list):
         print('\nError - Message length does not match chosen grid. Terminating program.', file=sys.stderr)
         sys.exit(1)
 
+def remove_punctuation_and_uppercase(word_list):
+    '''Remove punctuation and uppercase dummy words and message.'''
+    cleaned_list = []
+    punc = '''!()-[];:'"\,<>./?@#$%^&*_~''' # list of punctuation to remove
+    for word in word_list:
+        for char in word:
+            if char in punc:
+                word = word.replace(char, '')
+        word = word.upper()
+        cleaned_list.append(word)
+    return cleaned_list
+
 def add_dummy_and_code_words():
-    '''Add dummy and code words into the message and uppercase them'''
     pass
 
 def main():
     dummy_list = dummy_words.split()
     text_list = plaintext.split()
     validate_text_inputs(dummy_list, text_list)
+    clean_dummys = remove_punctuation_and_uppercase(dummy_list)
+    clean_message = remove_punctuation_and_uppercase(text_list)
+    add_dummy_and_code_words()
 
 if __name__ == '__main__':
     main()
