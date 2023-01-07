@@ -63,6 +63,13 @@ code_words = {
     'Porter': 'LANGFORD'
 }
 
+def uppercase_code_words(code_words):
+    code_words_upped = {}
+    for k, v in code_words.items():
+        code_words_upped[k.upper()] = v
+    print(code_words_upped)
+
+
 def validate_text_inputs(dummy_list, text_list):
     '''Validate all the user inputs for this cipher'''
     if len(dummy_list) != COLS:
@@ -84,16 +91,21 @@ def remove_punctuation_and_uppercase(word_list):
         cleaned_list.append(word)
     return cleaned_list
 
-def add_dummy_and_code_words():
-    pass
+def add_dummy_and_code_words(clean_message, clean_dummys):
+    '''Include dummy and code words to build full message'''
+    for idx, word in enumerate(clean_message):
+        if word in code_words.keys():
+            clean_message[idx] = code_words[word]
+
 
 def main():
     dummy_list = dummy_words.split()
     text_list = plaintext.split()
+    uppercase_code_words(code_words)
     validate_text_inputs(dummy_list, text_list)
     clean_dummys = remove_punctuation_and_uppercase(dummy_list)
     clean_message = remove_punctuation_and_uppercase(text_list)
-    add_dummy_and_code_words()
+    # add_dummy_and_code_words()
 
 if __name__ == '__main__':
     main()
