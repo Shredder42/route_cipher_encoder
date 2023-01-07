@@ -79,6 +79,17 @@ def validate_text_inputs(dummy_list, text_list):
         print('\nError - Message length does not match chosen grid. Terminating program.', file=sys.stderr)
         sys.exit(1)
 
+def key_to_int(key):
+    '''Turn key into list of integers and check validity.'''
+    key_int = [int(i) for i in key.split(' ')]
+    max_key_int = max(key_int)
+    min_key_int = min(key_int)
+    if len(key_int) != COLS or max_key_int > COLS or min_key_int < -COLS \
+        or 0 in key_int:
+        print('\nError - Problem with key. Terminating program.', file=sys.stderr)
+        sys.exit(1)
+    return key_int
+
 def remove_punctuation_and_uppercase(word_list):
     '''Remove punctuation and uppercase dummy words and message.'''
     cleaned_list = []
@@ -99,15 +110,16 @@ def add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped):
     coded_message = clean_message + clean_dummys
     print('The coded message = {}'.format(' '.join(coded_message)))
 
-
 def main():
     dummy_list = dummy_words.split()
     text_list = plaintext.split()
     code_words_upped = uppercase_code_words(code_words)
     validate_text_inputs(dummy_list, text_list)
+    key_int = key_to_int(key)
     clean_dummys = remove_punctuation_and_uppercase(dummy_list)
     clean_message = remove_punctuation_and_uppercase(text_list)
     coded_message = add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped)
+
 
 if __name__ == '__main__':
     main()
