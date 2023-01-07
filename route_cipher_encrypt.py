@@ -111,14 +111,16 @@ def add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped):
     print('The coded message = {}'.format(' '.join(coded_message)))
     return coded_message
 
-def encrypt(coded_message, key_int):
-    '''Build matrix and encrypt message.'''
+def build_matrix(coded_message):
+    '''Build the matrix.'''
     start = 0
-    stop = ROWS
     encryption_matrix = [None] * COLS
-    print(encryption_matrix)
-    # new_col = coded_message[start::6]
-    # print(new_col)
+    for i in range(COLS):
+        new_col = coded_message[start::6]
+        encryption_matrix[i] = new_col
+        start += 1
+    return encryption_matrix
+
 
 def main():
     dummy_list = dummy_words.split()
@@ -129,7 +131,8 @@ def main():
     clean_dummys = remove_punctuation_and_uppercase(dummy_list)
     clean_message = remove_punctuation_and_uppercase(text_list)
     coded_message = add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped)
-    encrypt(coded_message, key_int)
+    encryption_matrix = build_matrix(coded_message)
+
 
 
 
