@@ -1,21 +1,3 @@
-
-
-'''
-grid for encryption:
-WE WILL RUN THE BATTERIES AT
-VICKSBURG THE NIGHT OF APRIL 16
-AND PROCEED TO GRAND GULF WHERE
-WE WILL REDUCE THE FORTS BE
-PREPARED TO CROSS THE RIVER ON
-APRIL 25 OR 29 ADMIRAL PORTER
-D1 D2 D3 D4 D5 D6
-
-encrypted message:
-ANGELS CLAYTON PREPARED WE AND ODOR WE RUN NIGHT TO REDUCE CROSS OR CABIN
-CROCODILE MULTIPLY TO WILL PROCEED THE WILL AT SWEET WHERE BE ON LANGFORD SPAIN
-HOUNDS CLAYTON OWL BAILEY HICKORY HERMES UNIVERSITY FIRE ADD THE THE TREE OF THE
-
-'''
 import sys
 
 #--------------------------------------------------
@@ -47,7 +29,7 @@ code_words = {
     'April': 'CLAYTON',
     '16': 'SWEET',
     'Grand': 'TREE',
-    'Gulf': "OWL",
+    'Gulf': 'OWL',
     'Forts': 'BAILEY',
     'River': 'HICKORY',
     '25': 'MULTIPLY',
@@ -100,7 +82,7 @@ def add_dummy_and_code_words(clean_message, clean_dummys, code_words_upped):
     for idx, word in enumerate(clean_message): # replace code words
         if word in code_words_upped.keys():
             clean_message[idx] = code_words_upped[word]
-    coded_message = clean_message + clean_dummys
+    coded_message = clean_message + clean_dummys # add dummy words
     print('The coded message = {}'.format(' '.join(coded_message)))
     return coded_message
 
